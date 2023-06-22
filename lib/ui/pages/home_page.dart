@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
+import 'package:note_app/ui/widgets/buttons/card_button.dart';
+import 'package:note_app/ui/widgets/buttons/simple_buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 GlobalKey<ScaffoldState> homePageKey = GlobalKey<ScaffoldState>();
@@ -39,6 +41,14 @@ class HomePage extends StatelessWidget {
                     }
                   },
                 ),
+                MediumButton(
+                  title: "Boton nuevo",
+                  onTap: () {},
+                ),
+                const CardButton(
+                  title: "PDF",
+                  icon: Icons.document_scanner,
+                )
               ],
             ));
       },
