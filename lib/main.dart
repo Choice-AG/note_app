@@ -9,13 +9,13 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: ThemeController.instance.initTheme(),
-      builder: (snapshot, context) {
+    return ValueListenableBuilder(
+      valueListenable: ThemeController.instance.brightness,
+      builder: (BuildContext context, bool brightnessValue, Widget? child) {
         return MaterialApp(
           routes: {
             HomePage.homePageRoute: (context) => const HomePage(),
@@ -24,6 +24,7 @@ class MainApp extends StatelessWidget {
           title: Constants.mainTitle,
           theme: ThemeData(
             fontFamily: GoogleFonts.poppins().fontFamily,
+            brightness: brightnessValue ? Brightness.light : Brightness.dark,
           ),
           initialRoute: HomePage.homePageRoute,
         );

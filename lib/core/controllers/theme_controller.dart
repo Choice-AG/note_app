@@ -22,10 +22,12 @@ class ThemeController {
 
   void changeTheme() async {
     brightness.value = !brightness.value;
-    await PreferencesServices.instance.setBool('tema', brightness.value);
+    await PreferencesServices.instance.setBool("tema", brightness.value);
   }
 
   Future<void> initTheme() async {
     brightness.value = await PreferencesServices.instance.getBool("tema");
   }
+
+  getColorText() {}
 }

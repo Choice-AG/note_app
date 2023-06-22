@@ -6,7 +6,7 @@ class PreferencesServices {
 
   Future<String> getString(String key) async {
     SharedPreferences instance = await SharedPreferences.getInstance();
-    return instance.getString(key) ?? '';
+    return instance.getString(key) ?? "";
   }
 
   Future<void> setString(String key, String value) async {
