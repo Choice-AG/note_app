@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/controllers/theme_controller.dart';
 
 class CheckTile extends StatefulWidget {
   final String title;
   bool? activate;
   final Function(bool)? onChanged;
-  
+
   CheckTile({Key? key, this.title = "", this.activate = false, this.onChanged}) : super(key: key);
 
   @override
@@ -20,6 +21,7 @@ class _CheckTileState extends State<CheckTile> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Checkbox(
+              activeColor: ThemeController.instance.primary(),
               value: widget.activate,
               onChanged: (value) {
                 setState(() {
