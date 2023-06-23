@@ -5,6 +5,7 @@ class CheckTile extends StatefulWidget {
   final String title;
   bool? activate;
   final Function(bool)? onChanged;
+  
   CheckTile({Key? key, this.title = "", this.activate = false, this.onChanged}) : super(key: key);
 
   @override
