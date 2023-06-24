@@ -8,8 +8,19 @@ class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key, this.details}) : super(key: key);
 
   static const errorPageRoute = "error_page";
+
   final FlutterErrorDetails? details;
   Color fontColor() => !ThemeController.instance.brightnessValue ? Colors.white : Colors.black;
+
+  String getException() {
+    if (details != null) {
+      final exception = details?.exceptionAsString();
+      if (exception != null) {
+        return exception;
+      }
+    }
+    return "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +41,8 @@ class ErrorPage extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(32),
@@ -46,15 +57,23 @@ class ErrorPage extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              Constants.errorMessage,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: fontColor()),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pushNamed(context, HomePage.homePageRoute),
-              child: const Text("Volver al inicio"),
-            ),
+            Column(children: [
+              Text(
+                Constants.errorMessage,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: fontColor()),
+              ),
+              details != null
+                  ? Text(
+                      getException(),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: fontColor()),
+                    )
+                  : Container(),
+              TextButton(
+                onPressed: () => Navigator.pushNamed(context, HomePage.homePageRoute),
+                child: const Text("Volver al inicio"),
+              ),
+            ])
           ],
         ),
       ),

@@ -6,6 +6,7 @@ import 'package:note_app/ui/pages/error_page.dart';
 import 'package:note_app/ui/pages/home_page.dart';
 
 void main() {
+  ErrorWidget.builder = (FlutterErrorDetails details) => ErrorPage(details: details);
   runApp(const MainApp());
 }
 
