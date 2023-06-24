@@ -18,7 +18,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldMessengerState> _scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -28,10 +30,10 @@ class _HomePageState extends State<HomePage> {
           builder: (BuildContext context, value, Widget? child) {
             final theme = ThemeController.instance;
             return ScaffoldMessenger(
-              key: homePageMessengerKey,
+              key: _scaffoldMessengerKey,
               child: Scaffold(
                 backgroundColor: theme.background(),
-                key: homePageKey,
+                key: _scaffoldKey,
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -69,7 +71,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () => Navigator.pushNamed(context, ErrorPage.errorPageRoute),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ErrorPage()),
+                        );
+                      },
                       child: const Text('Ruta ErrorPage'),
                     ),
                   ],
