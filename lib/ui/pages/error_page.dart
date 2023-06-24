@@ -70,7 +70,7 @@ class ErrorPage extends StatelessWidget {
                     )
                   : Container(),
               TextButton(
-                onPressed: () => Navigator.pushNamed(context, HomePage.homePageRoute),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(context, HomePage.homePageRoute, (route) => false),
                 child: const Text("Volver al inicio"),
               ),
             ])
