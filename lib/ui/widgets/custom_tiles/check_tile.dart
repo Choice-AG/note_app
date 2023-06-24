@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
 
+// ignore: must_be_immutable
 class CheckTile extends StatefulWidget {
   final String title;
   bool? activate;
