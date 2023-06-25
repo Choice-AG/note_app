@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/data.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
 import 'package:note_app/ui/configure.dart';
-import 'package:note_app/ui/pages/home_page.dart';
+import 'package:note_app/ui/pages/landing_page.dart';
 
 class ErrorPage extends StatelessWidget {
   const ErrorPage({Key? key, this.details}) : super(key: key);
@@ -70,7 +70,7 @@ class ErrorPage extends StatelessWidget {
                     )
                   : Container(),
               TextButton(
-                onPressed: () => Navigator.pushNamedAndRemoveUntil(context, HomePage.homePageRoute, (route) => false),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(context, LandingPage.landingPageRoute, (route) => false),
                 child: const Text("Volver al inicio"),
               ),
             ])

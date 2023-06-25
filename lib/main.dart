@@ -4,6 +4,7 @@ import 'package:note_app/core/constants/data.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
 import 'package:note_app/ui/pages/error_page.dart';
 import 'package:note_app/ui/pages/home_page.dart';
+import 'package:note_app/ui/pages/landing_page.dart';
 
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) => ErrorPage(details: details);
@@ -22,6 +23,7 @@ class MainApp extends StatelessWidget {
           routes: {
             HomePage.homePageRoute: (context) => const HomePage(),
             ErrorPage.errorPageRoute: (context) => const ErrorPage(),
+            LandingPage.landingPageRoute: (context) => const LandingPage(),
           },
           debugShowCheckedModeBanner: false,
           title: Constants.mainTitle,
@@ -29,7 +31,7 @@ class MainApp extends StatelessWidget {
             fontFamily: GoogleFonts.poppins().fontFamily,
             brightness: brightnessValue ? Brightness.light : Brightness.dark,
           ),
-          initialRoute: HomePage.homePageRoute,
+          initialRoute: LandingPage.landingPageRoute,
         );
       },
     );
