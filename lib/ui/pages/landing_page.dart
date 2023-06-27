@@ -61,6 +61,8 @@ class LandingPage extends StatelessWidget {
                           onTap: () async {
                             LoadingWidgetController.instance.loading();
                             await initMethods(context);
+                            LoadingWidgetController.instance.changeText("Cargando página de inicio");
+                            await Future.delayed(const Duration(seconds: 2));
                             LoadingWidgetController.instance.close();
                             Navigator.pushNamed(context, HomePage.homePageRoute);
                           },
@@ -75,10 +77,11 @@ class LandingPage extends StatelessWidget {
           ),
         ),
         ValueListenableBuilder(
-            valueListenable: LoadingWidgetController.loadingNotifier,
-            builder: (context, bool value, Widget? child) {
-              return value ? const LoadingWidget() : const SizedBox();
-            })
+          valueListenable: LoadingWidgetController.loadingNotifier,
+          builder: (context, bool value, Widget? child) {
+            return value ? const LoadingWidget() : const SizedBox();
+          },
+        ),
       ],
     );
   }

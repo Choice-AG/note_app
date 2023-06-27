@@ -38,6 +38,7 @@ class LoadingWidget extends StatelessWidget {
                 ),
                 Text(
                   contentValue,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 16, color: Colors.white54),
                 ),
               ],

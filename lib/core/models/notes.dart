@@ -44,3 +44,15 @@ Note note2 = Note(
   description: "Esta es mi primera nota con imagen y texto",
   image: 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2021/09/mejor-aplicacion-fondos-pantalla-animados-llegaria-android-dentro-poco-2482649.jpg?tf=3840x',
 );
+
+List<Note> notes = [
+  note,
+  note1,
+  note2,
+  note,
+  note1,
+  note2,
+  note,
+  note1,
+  note2,
+];
