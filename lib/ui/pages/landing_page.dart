@@ -66,7 +66,6 @@ class LandingPage extends StatelessWidget {
                                 LoadingWidgetController.instance.loading();
                                 await initMethods(context);
                                 LoadingWidgetController.instance.changeText("Cargando página de inicio");
-                                await Future.delayed(const Duration(seconds: 2));
                                 LoadingWidgetController.instance.close();
                                 Navigator.pushNamed(context, HomePage.homePageRoute);
                               },

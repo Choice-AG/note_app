@@ -8,7 +8,6 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contentValue = LoadingWidgetController.instance.contentValue();
-
     return Material(
       color: Colors.white24,
       child: SizedBox(

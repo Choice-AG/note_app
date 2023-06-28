@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/core/constants/parameters.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
 import 'package:note_app/core/models/notes.dart';
+import 'package:note_app/ui/pages/note_page.dart';
 import 'package:note_app/ui/widgets/cards/custom_cards.dart';
 
 GlobalKey<ScaffoldState> homePageKey = GlobalKey<ScaffoldState>();
@@ -72,9 +73,24 @@ class _Body extends StatelessWidget {
             crossAxisCount: 2,
             itemCount: notes.length,
             itemBuilder: (context, index) {
-              if (notes[index].type == TypeNote.text) return SimpleCard(notes[index]);
-              if (notes[index].type == TypeNote.image) return ImageCard(notes[index]);
-              if (notes[index].type == TypeNote.textImage) return TextImageCard(notes[index]);
+              if (notes[index].type == TypeNote.text) {
+                return SimpleCard(
+                  notes[index],
+                  () => Navigator.pushNamed(context, NotePage.notePageRoute, arguments: NotePageArguments(note: notes[index])),
+                );
+              }
+              if (notes[index].type == TypeNote.image) {
+                return ImageCard(
+                  notes[index],
+                  () => Navigator.pushNamed(context, NotePage.notePageRoute, arguments: NotePageArguments(note: notes[index])),
+                );
+              }
+              if (notes[index].type == TypeNote.textImage) {
+                return TextImageCard(
+                  notes[index],
+                  () => Navigator.pushNamed(context, NotePage.notePageRoute, arguments: NotePageArguments(note: notes[index])),
+                );
+              }
               return Container();
             },
             staggeredTileBuilder: (index) => StaggeredTile.count(1, index.isEven ? 1.3 : 1.9),

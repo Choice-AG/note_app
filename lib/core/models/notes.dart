@@ -41,7 +41,7 @@ Note note2 = Note(
   title: "Primera nota",
   date: "22/06/2023",
   type: TypeNote.textImage,
-  description: "Esta es mi primera nota con imagen y texto",
+  description: "Esta es mi primera nota con imagen y texto https://pub.dev/packages/flutter https://pub.dev/packages/flutter https://pub.dev/packages/flutter https://pub.dev/packages/flutter",
   image: 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2021/09/mejor-aplicacion-fondos-pantalla-animados-llegaria-android-dentro-poco-2482649.jpg?tf=3840x',
 );
 

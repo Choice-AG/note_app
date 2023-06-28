@@ -21,4 +21,5 @@ class Constants {
   static const String subtitle = "Escribe, Crea, Anota y Dibuja distintos tipos de notas para no olvidarte de nada en el futuro";
   static const String mainService = "";
   static const String errorMessage = "Parece que ha sucedido un problema, por favor notifícalo en soporte para que este error pueda ser solucionado";
+  static const String defaultImage = "https://t3.ftcdn.net/jpg/04/34/72/82/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg";
 }
