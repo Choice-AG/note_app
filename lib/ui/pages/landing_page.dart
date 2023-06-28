@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/data.dart';
 import 'package:note_app/ui/pages/home_page.dart';
@@ -26,55 +28,59 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Scaffold(
-          backgroundColor: Colors.white,
-          body: SizedBox(
-            height: double.infinity,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Flexible(
-                  child: _image(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      Text(
-                        Constants.mainTitle,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
+        Stack(
+          children: [
+            Scaffold(
+              backgroundColor: Colors.white,
+              body: SizedBox(
+                height: double.infinity,
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: _image(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            Constants.mainTitle,
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            Constants.subtitle,
+                            style: TextStyle(color: Colors.blueGrey),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 100),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16),
+                            child: MediumButton(
+                              title: "Ingresar",
+                              onTap: () async {
+                                LoadingWidgetController.instance.loading();
+                                await initMethods(context);
+                                LoadingWidgetController.instance.changeText("Cargando página de inicio");
+                                await Future.delayed(const Duration(seconds: 2));
+                                LoadingWidgetController.instance.close();
+                                Navigator.pushNamed(context, HomePage.homePageRoute);
+                              },
                             ),
+                          ),
+                          const SizedBox(height: 60),
+                        ],
                       ),
-                      const SizedBox(height: 16),
-                      const Text(
-                        Constants.subtitle,
-                        style: TextStyle(color: Colors.blueGrey),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 100),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: MediumButton(
-                          title: "Ingresar",
-                          onTap: () async {
-                            LoadingWidgetController.instance.loading();
-                            await initMethods(context);
-                            LoadingWidgetController.instance.changeText("Cargando página de inicio");
-                            await Future.delayed(const Duration(seconds: 2));
-                            LoadingWidgetController.instance.close();
-                            Navigator.pushNamed(context, HomePage.homePageRoute);
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 60),
-                    ],
-                  ),
-                )
-              ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
+          ],
         ),
         ValueListenableBuilder(
           valueListenable: LoadingWidgetController.loadingNotifier,
