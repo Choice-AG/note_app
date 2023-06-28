@@ -8,7 +8,6 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final contentValue = LoadingWidgetController.instance.contentValue();
-
     return Material(
       color: Colors.white24,
       child: SizedBox(
@@ -38,6 +37,7 @@ class LoadingWidget extends StatelessWidget {
                 ),
                 Text(
                   contentValue,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 16, color: Colors.white54),
                 ),
               ],

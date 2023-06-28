@@ -3,26 +3,30 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/core/constants/parameters.dart';
 import 'package:note_app/core/controllers/theme_controller.dart';
 import 'package:note_app/core/models/notes.dart';
+import 'package:note_app/ui/configure.dart';
 import 'package:note_app/ui/pages/note_page.dart';
 import 'package:note_app/ui/widgets/cards/custom_cards.dart';
 
-GlobalKey<ScaffoldState> homePageKey = GlobalKey<ScaffoldState>();
-GlobalKey<ScaffoldMessengerState> homePageMessengerKey = GlobalKey<ScaffoldMessengerState>();
+GlobalKey<ScaffoldState> notePrivatePageKey = GlobalKey<ScaffoldState>();
+GlobalKey<ScaffoldMessengerState> notePrivatePageMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 Color fontColor() {
-  return ThemeController.instance.brightnessValue ? Colors.black : Colors.white;
+  return !ThemeController.instance.brightnessValue ? Colors.black : Colors.white;
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class NotePrivatePage extends StatelessWidget {
+  const NotePrivatePage({Key? key}) : super(key: key);
 
-  static const homePageRoute = "home_page";
+  static const notePrivatePageRoute = "note_private_page";
+
+  Color background() {
+    return ThemeController.instance.brightnessValue ? Configure.backgroundDark : Configure.backgroundLight;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeController.instance;
     return Scaffold(
-      backgroundColor: theme.background(),
+      backgroundColor: background(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -35,16 +39,6 @@ class HomePage extends StatelessWidget {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.search,
-              color: fontColor(),
-              size: 25,
-            ),
-            onPressed: () {},
-          )
-        ],
       ),
       body: const _Body(),
     );
@@ -63,7 +57,7 @@ class _Body extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Notas',
+            'Mis Notas Privadas',
             style: TextStyle(color: fontColor(), fontWeight: FontWeight.bold),
           ),
         ),
