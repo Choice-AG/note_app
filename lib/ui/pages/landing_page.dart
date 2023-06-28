@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/data.dart';
-import 'package:note_app/ui/pages/home_page.dart';
+import 'package:note_app/ui/pages/private_notes.dart';
 import 'package:note_app/ui/widgets/buttons/simple_buttons.dart';
 import 'package:note_app/ui/widgets/loading_widget/loading_widget.dart';
 import 'package:note_app/ui/widgets/loading_widget/loading_widget_controller.dart';
@@ -65,9 +65,8 @@ class LandingPage extends StatelessWidget {
                               onTap: () async {
                                 LoadingWidgetController.instance.loading();
                                 await initMethods(context);
-                                LoadingWidgetController.instance.changeText("Cargando página de inicio");
                                 LoadingWidgetController.instance.close();
-                                Navigator.pushNamed(context, HomePage.homePageRoute);
+                                Navigator.pushNamed(context, NotePrivatePage.notePrivatePageRoute);
                               },
                             ),
                           ),

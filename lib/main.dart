@@ -6,6 +6,7 @@ import 'package:note_app/ui/pages/error_page.dart';
 import 'package:note_app/ui/pages/home_page.dart';
 import 'package:note_app/ui/pages/landing_page.dart';
 import 'package:note_app/ui/pages/note_page.dart';
+import 'package:note_app/ui/pages/private_notes.dart';
 
 void main() {
   ErrorWidget.builder = (FlutterErrorDetails details) => ErrorPage(details: details);
@@ -26,6 +27,7 @@ class MainApp extends StatelessWidget {
             ErrorPage.errorPageRoute: (context) => const ErrorPage(),
             LandingPage.landingPageRoute: (context) => const LandingPage(),
             NotePage.notePageRoute: (context) => const NotePage(),
+            NotePrivatePage.notePrivatePageRoute: (context) => const NotePrivatePage(),
           },
           debugShowCheckedModeBanner: false,
           title: Constants.mainTitle,

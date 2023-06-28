@@ -13,6 +13,6 @@ class Configure {
 
   static const primaryButtonDark = primary;
 
-  static const backgroundLight = Color(0xFFDDDDDD);
+  static const backgroundLight = Color(0xFFEEEEEE);
   static const backgroundDark = primaryButtonLight;
 }

@@ -34,6 +34,11 @@ class NotePage extends StatelessWidget {
     final theme = ThemeController.instance;
     return Scaffold(
       backgroundColor: theme.background(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: ThemeController.instance.primary(),
+        child: const Icon(Icons.edit),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -52,6 +57,15 @@ class NotePage extends StatelessWidget {
           _title(arguments.note!),
           style: TextStyle(color: fontColor()),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.delete,
+              color: fontColor(),
+            ),
+          ),
+        ],
       ),
       body: _Body(arguments.note!),
     );
