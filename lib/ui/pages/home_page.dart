@@ -69,7 +69,7 @@ class _Body extends StatelessWidget {
         Expanded(
           child: StaggeredGridView.countBuilder(
             physics: const BouncingScrollPhysics(),
-            crossAxisCount: 4,
+            crossAxisCount: 2,
             itemCount: notes.length,
             itemBuilder: (context, index) {
               if (notes[index].type == TypeNote.text) return SimpleCard(notes[index]);
@@ -77,7 +77,7 @@ class _Body extends StatelessWidget {
               if (notes[index].type == TypeNote.textImage) return TextImageCard(notes[index]);
               return Container();
             },
-            staggeredTileBuilder: (index) => const StaggeredTile.count(2, 2),
+            staggeredTileBuilder: (index) => StaggeredTile.count(1, index.isEven ? 1.3 : 1.9),
             mainAxisSpacing: 1,
             crossAxisSpacing: 1,
           ),
